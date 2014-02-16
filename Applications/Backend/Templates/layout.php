@@ -28,6 +28,7 @@
           <li><a href="/admin/materiel">Matériel</a></li>
           <li><a href="/admin/categorie">Categorie</a></li>
           <li><a href="/admin/client">Client</a></li>
+          <li><a href="/admin/devis">Devis</a></li>
           <?php } ?>
         </ul>
       </div>

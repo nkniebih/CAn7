@@ -1,8 +1,10 @@
 <?php
 namespace Library;
 
+use Applications;
 class Page extends ApplicationComponent
 {
+  protected $ajax= false;
   protected $contentFile;
   protected $vars = array();
   
@@ -37,7 +39,15 @@ class Page extends ApplicationComponent
     $content = ob_get_clean();
     
     ob_start();
-      require __DIR__.'/../Applications/'.$this->app->name().'/Templates/layout.php';
+    
+    if(!$this->ajax)
+    {
+    	require __DIR__.'/../Applications/'.$this->app->name().'/Templates/layout.php';
+    }
+    else
+    {
+    	require __DIR__.'/../Applications/'.$this->app->name().'/Modules/Devis/Views/test.php';
+    }
     return ob_get_clean();
   }
   
@@ -49,5 +59,17 @@ class Page extends ApplicationComponent
     }
     
     $this->contentFile = $contentFile;
+  }
+  
+  public function ajax()
+  {
+  	return $this->ajax;
+  }
+  public function setAjax($val)
+  {
+  	if($val)
+  	{
+  		$this->ajax = $val;
+  	}
   }
 }
