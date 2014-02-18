@@ -23,8 +23,19 @@
 	<route url="/admin/client-update-([0-9]+)\.html" 				module="Client" 	action="update" vars="id" />
 	<route url="/admin/client-delete-([0-9]+)\.html" 				module="Client" 	action="delete" vars="id" />
 <!-- Categorie devis -->
-	<route url="/admin/devis" 										module="Devis" 	action="index" />
-	<route url="/admin/devis-insert\.html" 							module="Devis" 	action="insert" />
-	<route url="/admin/devis-update-([0-9]+)\.html" 				module="Devis" 	action="update" vars="id" />
-	<route url="/admin/devis-delete-([0-9]+)\.html" 				module="Devis" 	action="delete" vars="id" />	
+	<route url="/admin/devis" 										module="Devis" 		action="index" />
+	<route url="/admin/devis-insert\.html" 							module="Devis" 		action="insert" />
+	<route url="/admin/devis-update-([0-9]+)\.html" 				module="Devis" 		action="update" vars="id" />
+	<route url="/admin/devis-delete-([0-9]+)\.html" 				module="Devis" 		action="delete" vars="id" />
+<!-- Categorie calendrier -->
+	<route url="/admin/calendrier" 									module="Calendrier" 	action="index" />
+	<route url="/admin/calendrier-insert\.html" 					module="Calendrier" 	action="insert" />
+	<route url="/admin/calendrier-update-([0-9]+)\.html" 			module="Calendrier" 	action="update" vars="id" />
+	<route url="/admin/calendrier-delete-([0-9]+)\.html" 			module="Calendrier" 	action="delete" vars="id" />
+<!-- Categorie formation -->
+	<route url="/admin/formation" 									module="Formation" 	action="index" />
+	<route url="/admin/formation-insert\.html" 						module="Formation" 	action="insert" />
+	<route url="/admin/formation-update-([0-9]+)\.html" 			module="Formation" 	action="update" vars="id" />
+	<route url="/admin/formation-delete-([0-9]+)\.html" 			module="Formation" 	action="delete" vars="id" />
+						
 </routes>

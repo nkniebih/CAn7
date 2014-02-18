@@ -13,9 +13,4 @@ class DevisController extends \Library\BackController
     //$this->page->addVar('nombreDevis', $managerDevis->count());
   }
   
-  public function executeTest(\Library\HTTPRequest $request)
-  {
-  	$this->page->setAjax(true);
-  	$this->page->addVar('id', $request->getData('id'));
-  }
 }

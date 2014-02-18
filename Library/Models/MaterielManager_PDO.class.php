@@ -7,7 +7,7 @@ class MaterielManager_PDO extends MaterielManager
 {
   public function getAll()
   {
-    $sql = 'SELECT id, auteur, nom, prix, quantite, dateAjout, remarque, puissance, id_categorie, image, reparation,poids FROM site_materiel ORDER BY id DESC';
+    $sql = 'SELECT id, auteur, nom, prix, quantite, dateAjout, remarque, puissance, id_categorie, image, reparation,poids,volume FROM site_materiel ORDER BY id DESC';
     
     $requete = $this->dao->query($sql);
     $requete->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, '\Library\Entities\Materiel');
@@ -23,7 +23,7 @@ class MaterielManager_PDO extends MaterielManager
     	$requeteCat->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, '\Library\Entities\Categorie');
     	if($categorie = $requeteCat->fetch())
     	{
-    	$materiel->setCategorie($categorie);
+    		$materiel->setCategorie($categorie);
     	}
     	$requeteCat->closeCursor(); 
     }
@@ -34,7 +34,7 @@ class MaterielManager_PDO extends MaterielManager
   
   public function getUnique($id)
   {
-  	$requete = $this->dao->prepare('SELECT id, auteur, nom, prix, quantite, dateAjout, remarque, puissance, id_categorie, image,poids,reparation FROM site_materiel WHERE id = :id');
+  	$requete = $this->dao->prepare('SELECT id, auteur, nom, prix, quantite, dateAjout, remarque, puissance, id_categorie, image,poids,reparation,volume FROM site_materiel WHERE id = :id');
   	$requete->bindValue(':id', (int) $id, \PDO::PARAM_INT);
   	$requete->execute();
   
@@ -57,7 +57,7 @@ class MaterielManager_PDO extends MaterielManager
   
   protected function add(Materiel $materiel)
   {
-  	$requete = $this->dao->prepare('INSERT INTO site_materiel SET auteur = :auteur, nom = :nom, prix = :prix, quantite = :quantite, dateAjout = NOW(), remarque = :remarque, puissance = :puissance,id_categorie = :id_categorie, image = :image, reparation=:reparation,poids=:poids');
+  	$requete = $this->dao->prepare('INSERT INTO site_materiel SET auteur = :auteur, nom = :nom, prix = :prix, quantite = :quantite, dateAjout = NOW(), remarque = :remarque, puissance = :puissance,id_categorie = :id_categorie, image = :image, reparation=:reparation,poids=:poids, volume=:volume');
   
   	$requete->bindValue(':auteur', $materiel->auteur());
   	$requete->bindValue(':nom', $materiel->nom());
@@ -69,13 +69,14 @@ class MaterielManager_PDO extends MaterielManager
   	$requete->bindValue(':image',$materiel->image());
   	$requete->bindValue(':reparation',$materiel->reparation(), \PDO::PARAM_INT);
   	$requete->bindValue(':poids',$materiel->poids());
+  	$requete->bindValue(':volume',$materiel->volume());
   
   	$requete->execute();
   }
   
 	protected function modify(Materiel $materiel)
   {
-  	$requete = $this->dao->prepare('UPDATE site_materiel SET auteur = :auteur, nom = :nom, prix = :prix, quantite = :quantite, remarque = :remarque, puissance = :puissance, id_categorie =:id_categorie, image =:image, reparation=:reparation,poids=:poids WHERE id = :id');
+  	$requete = $this->dao->prepare('UPDATE site_materiel SET auteur = :auteur, nom = :nom, prix = :prix, quantite = :quantite, remarque = :remarque, puissance = :puissance, id_categorie =:id_categorie, image =:image, reparation=:reparation,poids=:poids,volume=:volume WHERE id = :id');
   
   	$requete->bindValue(':auteur', $materiel->auteur());
   	$requete->bindValue(':nom', $materiel->nom());
@@ -88,6 +89,7 @@ class MaterielManager_PDO extends MaterielManager
   	$requete->bindValue(':image',$materiel->image());
   	$requete->bindValue(':reparation',$materiel->reparation(), \PDO::PARAM_INT);
   	$requete->bindValue(':poids',$materiel->poids());
+  	$requete->bindValue(':volume',$materiel->volume());
   	
   	$requete->execute();
   }
@@ -107,7 +109,7 @@ class MaterielManager_PDO extends MaterielManager
 	
   	public function getAllCategorie($id)
   	{
-  		$requete = $this->dao->prepare('SELECT id,auteur,nom,prix,quantite, dateAjout,remarque,puissance,id_categorie, image,poids,reparation FROM site_materiel WHERE id_categorie =:id_categorie');
+  		$requete = $this->dao->prepare('SELECT id,auteur,nom,prix,quantite, dateAjout,remarque,puissance,id_categorie, image,poids,reparation,volume FROM site_materiel WHERE id_categorie =:id_categorie');
 		$requete->bindValue(':id_categorie',(int) $id, \PDO::PARAM_INT);
 		$requete->execute();
 		$requete->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, '\Library\Entities\Materiel');

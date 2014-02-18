@@ -2,4 +2,5 @@
 <definitions>
 	<define var="login" value="admin" />
 	<define var="pass"  value="mdp" />
+	<define var="dirSite" value="/Users/nicolas/Sites/CAn7/Web/" />
 </definitions>

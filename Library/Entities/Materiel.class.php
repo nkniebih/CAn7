@@ -14,7 +14,8 @@ class Materiel extends \Library\Entity
 			  $id_categorie,
 			  $image,
 			  $poids,
-			  $reparation;
+			  $reparation,
+			  $volume;
 	
 	const AUTEUR_INVALIDE = 1;
 	const NOM_INVALIDE = 2;
@@ -24,6 +25,7 @@ class Materiel extends \Library\Entity
 	const PUISSANCE_INVALIDE = 6;
 	const POIDS_INVALIDE = 7;
 	const REPARATION_INVALIDE = 8;
+	const VOLUMUE_INVALIDE = 9;
 
 	public function isValid()
 	{
@@ -144,11 +146,23 @@ class Materiel extends \Library\Entity
 	{
 		if(!is_float($reparation))
 		{
-			$this->erreurs[] = $reparation;
+			$this->erreurs[] = self::REPARATION_INVALIDE;
 		}
 		else 
 		{
 			$this->reparation = $reparation;
+		}
+	}
+	
+	public function setVolume($volume)
+	{
+		if(!is_float($volume))
+		{
+			$this->erreurs[] = self::VOLUMUE_INVALIDE;
+		}
+		else
+		{
+			$this->volume = $volume;
 		}
 	}
 	
@@ -211,5 +225,10 @@ class Materiel extends \Library\Entity
 	public function poids()
 	{
 		return $this->poids;
+	}
+	
+	public function volume()
+	{
+		return $this->volume;
 	}
 }

@@ -35,10 +35,11 @@ class MaterielController extends \Library\BackController
   					'categorie' => $this->managers->getManagerOf('Categorie')->getUnique($request->postData('categorie')),	
   					'reparation' => filter_var($request->postData('reparation'),FILTER_VALIDATE_FLOAT),
   					'poids' => filter_var($request->postData('poids'),FILTER_VALIDATE_FLOAT),
+  					'volume' => filter_var($request->postData('volume'),FILTER_VALIDATE_FLOAT),
   			)
   		);
   		$upload = new \Library\Entities\Upload(array(
-  				'dir' => '/Users/nicolas/Sites/CAn7/Web/upload/',
+  				'dir' => $this->app->config()->get('dirSite').'upload/',
   				'maxsize' => 10000000,
   				'extensions' => array('png','gif','jpg','jpeg'),
   		));

@@ -29,6 +29,8 @@
           <li><a href="/admin/categorie">Categorie</a></li>
           <li><a href="/admin/client">Client</a></li>
           <li><a href="/admin/devis">Devis</a></li>
+          <li><a href="/admin/calendrier">Calendrier</a></li>
+          <li><a href="/admin/formation">Formation</a></li>
           <?php } ?>
         </ul>
       </div>

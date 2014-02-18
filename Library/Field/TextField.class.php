@@ -1,5 +1,5 @@
 <?php
-namespace Library\Filed;
+namespace Library\Field;
 
 class TextField extends \Library\Field
 {

@@ -82,6 +82,16 @@ class MaterielFormBuilder extends \Library\FormBuilder
        				new \Library\Validator\FloatPositiveValidator('Merci de spécifier une puissance positive'),
        		),
        )))
+       ->add(new \Library\Field\StringField(array(
+       		'label' => 'Volume',
+       		'name' => 'volume',
+       		'maxLength' => 100,
+       		'required' => false,
+       		'validators' => array(
+       				new \Library\Validator\FloatValidator('Merci de spécifier la puissance du matériel'),
+       				new \Library\Validator\FloatPositiveValidator('Merci de spécifier une puissance positive'),
+       		),
+       )))
        ->add(new \Library\Field\PictureField(array(
        		'label' => 'Image',
        		'name' => 'image',
